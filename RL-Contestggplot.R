@@ -1,6 +1,6 @@
 library(tidyverse); library(tinytex); library(conflicted); library(palmerpenguins); library(ggthemes)
 
-#Plot1
+#Plot1 : Manchots, rapport entre la longueur du bec et le poids
 ggplot(data = penguins,
        mapping = aes(x = bill_length_mm, y = body_mass_g )) +
   geom_hex(bins=16) +
@@ -11,7 +11,7 @@ labs(
   x = "Longueur du bec (mm)", y = "Poids (g)") +
   theme_linedraw()
 
-#Plot 2
+#Plot 2 : Manchots, rapport entre l'île et le poids
 ggplot(data = penguins,
        mapping = aes(x = island, y = body_mass_g )) +
   geom_violin(aes(fill=species)) +
