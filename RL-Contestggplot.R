@@ -1,4 +1,5 @@
-library(tidyverse); library(tinytex); library(conflicted);library(palmerpenguins); library(ggthemes); library(gridExtra)
+library(ggplot2);library(palmerpenguins); library(ggthemes); library(gridExtra)
+
 #Plot1 : Manchots, rapport entre la longueur du bec et le poids
 plot1 = ggplot(data = penguins,
        mapping = aes(x = bill_length_mm, y = body_mass_g )) +
