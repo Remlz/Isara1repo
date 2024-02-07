@@ -1,9 +1,8 @@
-library(tidyverse); library(tinytex); library(conflicted); library(palmerpenguins); library(ggthemes)
-
+library(palmerpenguins); library(ggthemes); library(gridExtra)
 #Plot1 : Manchots, rapport entre la longueur du bec et le poids
-ggplot(data = penguins,
+plot1 = ggplot(data = penguins,
        mapping = aes(x = bill_length_mm, y = body_mass_g )) +
-  geom_hex(bins=16) +
+  geom_hex(bins=1) +
   scale_fill_distiller(palette="Blues") +
 labs(
   title = "Rapport longueur du Bec X Poids",
@@ -12,7 +11,7 @@ labs(
   theme_linedraw()
 
 #Plot 2 : Manchots, rapport entre l'île et le poids
-ggplot(data = penguins,
+plot2 = ggplot(data = penguins,
        mapping = aes(x = island, y = body_mass_g )) +
   geom_violin(aes(fill=species)) +
   labs(
@@ -22,3 +21,4 @@ ggplot(data = penguins,
   theme_minimal() +
   scale_color_colorblind()
 
+grid.arrange(plot1, plot2, ncol=2)
