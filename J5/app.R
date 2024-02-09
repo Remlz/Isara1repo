@@ -1,14 +1,14 @@
-## Application sur les manchots
+##Application sur les manchots
 
 library(shiny); library(palmerpenguins); library(ggplot2); library(ggthemes)
 
 
-# On définit l'interface utilisateur
+#On définit l'interface utilisateur
 ui <- fluidPage(
-    # Titre de l'application
+    #Titre de l'application
     titlePanel("Palmerpenguins"),
 
-    # Panneau latéral
+    #Panneau latéral
     sidebarLayout(
         sidebarPanel(
           #Case à cocher
@@ -28,14 +28,13 @@ ui <- fluidPage(
                         value = 30)
         ),
 
-        # Montre le graphique
         mainPanel(
            plotOutput("distPlot")
         )
     )
 )
 
-# On définit le server
+#On définit le server
 server <- function(input, output) {
   output$distPlot <- renderPlot({
     # switch() permet de sélectionner la valeur correcte selon les options,
@@ -76,8 +75,10 @@ server <- function(input, output) {
       ) +
       #On rend le graphique visible pour tous, mode daltonien
       scale_color_colorblind()
+    
 ###Ne fonctionne toujours pas ...    
     #J'applique le zoom
+    
     #Try 1
       #plot <- plot + coord_cartesian(xlim = c(20, input$valzoom), ylim= c(10, input$valzoom/2))
     
@@ -101,9 +102,5 @@ server <- function(input, output) {
   })
 }
 
-# generate bins based on input$bins from ui.R
-# x    <- faithful[, 2]
-# bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-# Run the application 
+#Run the application 
 shinyApp(ui = ui, server = server)
